@@ -75,7 +75,7 @@ public class FragmentMap extends Fragment implements NaverMap.OnMapClickListener
     private InfoWindow infoWindow;
     private List<Store> storeList = new ArrayList<>();
     private List<Marker> markerList = new ArrayList<>();
-
+    /* hi*/
     // 데이터베이스 관련 변수
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databasedReference;
