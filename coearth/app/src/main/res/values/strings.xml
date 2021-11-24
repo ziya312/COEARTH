@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">coearth</string>
+    <string name="add"> 서울시 종로구 명륜3가 53-21 </string>
+    <string name="category">생활용품</string>
+    <string name="tel">02-3241-2321</string>
+    <string name="title">상점명</string>
+</resources>

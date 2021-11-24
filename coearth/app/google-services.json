@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "219582731591",
+    "project_id": "coearth-3c946",
+    "storage_bucket": "coearth-3c946.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:219582731591:android:7864938cc38dbeee9a6862",
+        "android_client_info": {
+          "package_name": "com.example.coearth"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "219582731591-5lbjut377por3sjabe5458bikqcehh8f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.coearth",
+            "certificate_hash": "27982759f41dc96a1dcda968b11a674eae219fb7"
+          }
+        },
+        {
+          "client_id": "219582731591-ia3a8m6es3dh79kkmmea7ci93s88bf00.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAQpu7a6M91log2vAenlCbTLlZpyxZI4Ic"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "219582731591-ia3a8m6es3dh79kkmmea7ci93s88bf00.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
