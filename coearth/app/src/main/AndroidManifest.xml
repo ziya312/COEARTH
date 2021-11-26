@@ -13,7 +13,12 @@
         android:roundIcon="@mipmap/ic_logo_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Coearth">
-        <activity android:name=".StoreAdapter"></activity>
+        <activity
+            android:name=".LifeActivity"
+            android:label="@string/title_activity_life"
+            android:theme="@style/Theme.Coearth.NoActionBar"></activity>
+        <activity android:name=".CafeActivity" />
+        <activity android:name=".StoreAdapter" />
         <activity android:name=".ReviewActivity" />
         <activity android:name=".DetailActivity" />
 

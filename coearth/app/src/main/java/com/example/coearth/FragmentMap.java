@@ -1,6 +1,7 @@
 package com.example.coearth;
 
 import android.Manifest;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.PointF;
@@ -291,7 +292,7 @@ public class FragmentMap extends Fragment implements NaverMap.OnMapClickListener
                 Glide.with(FragmentMap.this).load(stores.getImg()).into(img);*/
 
                 ((TextView) view.findViewById(R.id.stName)).setText(stores.getTitle());
-                ((TextView) view.findViewById(R.id.stDetail)).setText(stores.getDetail());
+                ((TextView) view.findViewById(R.id.tv_address)).setText(stores.getDetail());
                 ((TextView) view.findViewById(R.id.stCategory)).setText(stores.getCategory());
 
                 ratingNum = view.findViewById(R.id.rating);

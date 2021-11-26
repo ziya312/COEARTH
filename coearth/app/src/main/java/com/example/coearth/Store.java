@@ -1,5 +1,7 @@
 package com.example.coearth;
 
+import android.location.Location;
+
 import com.google.firebase.database.IgnoreExtraProperties;
 
 @IgnoreExtraProperties
@@ -82,4 +84,5 @@ public class Store {
     public String getViews(){ return views; }
 
     public void setViews(String views){ this.tel = views; }
+
 }

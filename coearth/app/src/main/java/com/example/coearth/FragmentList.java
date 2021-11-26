@@ -1,31 +1,63 @@
 package com.example.coearth;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.GridLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+
 
 public class FragmentList extends Fragment {
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_list, container, false);
-        final Button button_list = (Button) view.findViewById(R.id.list_btn);
+    private GridLayout gridLayout;
+    private CardView cd_category;
 
-        button_list.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), StoreListActivity.class);
-                intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK);
-                v.getContext().startActivity(intent);
-                Log.v("onclick","error");
-            }
-        });
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_list,container,false);
+
+        gridLayout = view.findViewById(R.id.grid);
+        setClickEvent(gridLayout);
         return view;
+    }
+
+    private void setClickEvent(GridLayout gridLayout){
+        for (int i = 0; i< gridLayout.getChildCount(); i++){
+            final CardView cardView = (CardView) gridLayout.getChildAt(i);
+            final int index = i;
+            cardView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(index == 0){
+                        Intent intent = new Intent(getActivity(),CafeActivity.class);
+                        startActivity(intent);
+                    }
+                    else if(index == 1){
+                        Intent intent = new Intent(getActivity(),LifeActivity.class);
+                        startActivity(intent);
+                    }
+                    else if(index == 2){
+                        Intent intent = new Intent(getActivity(),LifeActivity.class);
+                        startActivity(intent);
+                    }
+                    else if(index == 3){
+                        Intent intent = new Intent(getActivity(),LifeActivity.class);
+                        startActivity(intent);
+                    }
+                    else if(index == 4){
+                        Intent intent = new Intent(getActivity(),LifeActivity.class);
+                        startActivity(intent);
+                    }
+                }
+            });
+
+        }
+
     }
 }
