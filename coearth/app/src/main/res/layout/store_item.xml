@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/image"
+            android:id="@+id/iv_store"
             android:layout_width="match_parent"
             android:layout_height="300dp"
             android:background="#ffffff"
@@ -28,7 +28,7 @@
             android:scaleType="fitXY" />
 
         <TextView
-            android:id="@+id/views"
+            android:id="@+id/tv_views"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right|top"
@@ -39,7 +39,7 @@
             android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/stName"
+            android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left|bottom"
@@ -50,7 +50,7 @@
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/stCategory"
+            android:id="@+id/tv_category"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right|bottom"
@@ -72,7 +72,7 @@
             android:textSize="12sp" />
 
         <RatingBar
-            android:id="@+id/ratingbar"
+            android:id="@+id/iv_ratingbar"
             style="@style/Widget.AppCompat.RatingBar.Small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -85,7 +85,7 @@
             android:stepSize="0.1" />
 
         <TextView
-            android:id="@+id/star"
+            android:id="@+id/tv_star"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right|bottom"

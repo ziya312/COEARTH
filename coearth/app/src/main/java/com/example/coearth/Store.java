@@ -6,7 +6,7 @@ import com.google.firebase.database.IgnoreExtraProperties;
 
 @IgnoreExtraProperties
 public class Store {
-    private String img;
+    private String img; // URL 주소
     private String title;
     private String category;
     private String detail;
