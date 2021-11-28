@@ -1,6 +1,7 @@
 package com.example.coearth;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +31,7 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.StoreViewHol
     public StoreAdapter(ArrayList<Store> storeList, Context context) {
         this.storeList = storeList;
         this.context = context;
+        Log.d("StoreAdapter","Success Adapter");
 
     }
 
@@ -43,8 +45,8 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.StoreViewHol
 
     @Override
     public void onBindViewHolder(@NonNull StoreViewHolder holder, int position) {
-        if("카페".equals(storeList.get(position).getCategory())) {
             Glide.with(holder.itemView)
+                    .asBitmap()
                     .load(storeList.get(position).getImg())
                     .into(holder.iv_store);
             holder.tv_title.setText(storeList.get(position).getTitle());
@@ -52,7 +54,6 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.StoreViewHol
             holder.tv_address.setText(storeList.get(position).getDetail());
             holder.tv_views.setText(storeList.get(position).getViews());
             holder.tv_star.setText(storeList.get(position).getScore());
-        }
 
     }
 
@@ -77,6 +78,8 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.StoreViewHol
             this.tv_address = itemView.findViewById(R.id.tv_address);
             this.tv_star = itemView.findViewById(R.id.tv_star);
             this.iv_ratingbar = itemView.findViewById(R.id.iv_ratingbar);
+
+            Log.d("StoreAdapter","Success ViewHolder");
         }
     }
 }

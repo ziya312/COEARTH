@@ -4,12 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".CafeActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints" />
+        android:layout_height="match_parent"
+        tools:ignore="MissingConstraints"
+        android:scrollbarFadeDuration="0"
+        android:scrollbarSize="5dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

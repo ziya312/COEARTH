@@ -2,30 +2,30 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="320dp"
-    android:backgroundTint="#000000">
+    android:layout_height="wrap_content"
+    android:backgroundTint="#000000"
+    android:orientation="vertical"
+    android:padding="20dp">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cv_store"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="1dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.6"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="300dp"
+        android:elevation="5dp"
+        app:cardBackgroundColor="#ffffff"
+        app:cardCornerRadius="10dp"
+        app:cardUseCompatPadding="true">
 
         <ImageView
             android:id="@+id/iv_store"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="match_parent"
             android:background="#ffffff"
-            android:src="@drawable/image_btn"
-            android:scaleType="fitXY" />
+            android:scaleType="fitXY"
+            android:src="@drawable/image_btn" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#40000000"/>
 
         <TextView
             android:id="@+id/tv_views"
@@ -46,7 +46,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginBottom="30dp"
             android:text="상점명"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="20sp" />
 
         <TextView

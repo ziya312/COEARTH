@@ -287,9 +287,12 @@ public class FragmentMap extends Fragment implements NaverMap.OnMapClickListener
 
                 Log.d("image HERE",stores.getImg());
 
-                /*
                 ImageView img = (ImageView) view.findViewById(R.id.img_store);
-                Glide.with(FragmentMap.this).load(stores.getImg()).into(img);*/
+                Glide.with(FragmentMap.this)
+                        .asBitmap()
+                        .override(120,120)
+                        .load(stores.getImg())
+                        .into(img);
 
                 ((TextView) view.findViewById(R.id.stName)).setText(stores.getTitle());
                 ((TextView) view.findViewById(R.id.tv_address)).setText(stores.getDetail());
