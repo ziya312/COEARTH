@@ -31,7 +31,7 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.StoreViewHol
     public StoreAdapter(ArrayList<Store> storeList, Context context) {
         this.storeList = storeList;
         this.context = context;
-        Log.d("StoreAdapter","Success Adapter");
+        Log.d("StoreAdapter", "Success Adapter");
 
     }
 
@@ -45,15 +45,15 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.StoreViewHol
 
     @Override
     public void onBindViewHolder(@NonNull StoreViewHolder holder, int position) {
-            Glide.with(holder.itemView)
-                    .asBitmap()
-                    .load(storeList.get(position).getImg())
-                    .into(holder.iv_store);
-            holder.tv_title.setText(storeList.get(position).getTitle());
-            holder.tv_category.setText(storeList.get(position).getCategory());
-            holder.tv_address.setText(storeList.get(position).getDetail());
-            holder.tv_views.setText(storeList.get(position).getViews());
-            holder.tv_star.setText(storeList.get(position).getScore());
+        Glide.with(holder.itemView)
+                .asBitmap()
+                .load(storeList.get(position).getImg())
+                .into(holder.iv_store);
+        holder.tv_title.setText(storeList.get(position).getTitle());
+        holder.tv_category.setText(storeList.get(position).getCategory());
+        holder.tv_address.setText(storeList.get(position).getDetail());
+        holder.tv_views.setText(storeList.get(position).getViews());
+        holder.tv_star.setText(storeList.get(position).getScore());
 
     }
 
@@ -79,7 +79,7 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.StoreViewHol
             this.tv_star = itemView.findViewById(R.id.tv_star);
             this.iv_ratingbar = itemView.findViewById(R.id.iv_ratingbar);
 
-            Log.d("StoreAdapter","Success ViewHolder");
+            Log.d("StoreAdapter", "Success ViewHolder");
         }
     }
 }

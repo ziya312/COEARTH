@@ -30,7 +30,7 @@ public class CafeActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager;
     private ArrayList<Store> storeList;
     private FirebaseDatabase database;
-    private DatabaseReference databaseReference;
+    private DatabaseReference databaseReference, caferef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +45,6 @@ public class CafeActivity extends AppCompatActivity {
 
         database = FirebaseDatabase.getInstance(); // 파이어베이스 DB 연동
         databaseReference = database.getReference("stores"); // DB 테이블 연결
-
         adapter = new StoreAdapter(storeList, this);
         recyclerView.setAdapter(adapter);
 
@@ -56,6 +55,7 @@ public class CafeActivity extends AppCompatActivity {
                 storeList.clear(); // 기존 배열 리스트 초기화
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()){
                     Store store = snapshot.getValue(Store.class);
+                    Log.d("Store_category", store.getCategory());
                     storeList.add(store); // 데이터들을 배열리스트에 넣고 리사이클 뷰에 넣을 준비
                 }
                 adapter.notifyDataSetChanged(); // 리스트 저장 및 새로고침

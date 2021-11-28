@@ -92,14 +92,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:src="@drawable/cafe_grid" />
+                        android:src="@drawable/food_grid" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
                         android:gravity="center"
-                        android:text="생활용품"
+                        android:text="음식점"
                         android:textColor="@android:color/black"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -134,7 +134,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:src="@drawable/cafe_grid" />
+                        android:src="@drawable/life_grid" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -173,7 +173,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:src="@drawable/cafe_grid" />
+                        android:src="@drawable/cloth_grid" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -216,7 +216,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:src="@drawable/cafe_grid" />
+                        android:src="@drawable/etc_grid" />
 
                     <TextView
                         android:layout_width="match_parent"
