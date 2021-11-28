@@ -1,24 +1,17 @@
 package com.example.coearth;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -30,12 +23,12 @@ public class CafeActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager;
     private ArrayList<Store> storeList;
     private FirebaseDatabase database;
-    private DatabaseReference databaseReference, caferef;
+    private DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cafe);
+        setContentView(R.layout.activity_recycler);
 
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true); // 성능강화
@@ -56,7 +49,9 @@ public class CafeActivity extends AppCompatActivity {
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()){
                     Store store = snapshot.getValue(Store.class);
                     Log.d("Store_category", store.getCategory());
-                    storeList.add(store); // 데이터들을 배열리스트에 넣고 리사이클 뷰에 넣을 준비
+                    if(store.getCategory().equals("카페")) {
+                        storeList.add(store); // 데이터들을 배열리스트에 넣고 리사이클 뷰에 넣을 준비
+                    }
                 }
                 adapter.notifyDataSetChanged(); // 리스트 저장 및 새로고침
                 Log.e("CafeActivity","Success DB");

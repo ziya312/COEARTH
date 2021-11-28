@@ -39,7 +39,7 @@ public class FragmentList extends Fragment {
                         startActivity(intent);
                     }
                     else if(index == 1){
-                        Intent intent = new Intent(getActivity(),LifeActivity.class);
+                        Intent intent = new Intent(getActivity(),FoodActivity.class);
                         startActivity(intent);
                     }
                     else if(index == 2){
@@ -47,11 +47,11 @@ public class FragmentList extends Fragment {
                         startActivity(intent);
                     }
                     else if(index == 3){
-                        Intent intent = new Intent(getActivity(),LifeActivity.class);
+                        Intent intent = new Intent(getActivity(),ClothActivity.class);
                         startActivity(intent);
                     }
                     else if(index == 4){
-                        Intent intent = new Intent(getActivity(),LifeActivity.class);
+                        Intent intent = new Intent(getActivity(),EtcActivity.class);
                         startActivity(intent);
                     }
                 }

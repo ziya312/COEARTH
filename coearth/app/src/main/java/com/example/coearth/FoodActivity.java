@@ -1,6 +1,13 @@
 package com.example.coearth;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.ImageView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -8,23 +15,16 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.util.Log;
-
 import java.util.ArrayList;
 
-public class LifeActivity extends AppCompatActivity {
+public class FoodActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
     private ArrayList<Store> storeList;
     private FirebaseDatabase database;
-    private DatabaseReference databaseReference, caferef;
+    private DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,13 +49,13 @@ public class LifeActivity extends AppCompatActivity {
                 storeList.clear(); // 기존 배열 리스트 초기화
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()){
                     Store store = snapshot.getValue(Store.class);
-                    Log.d("Store_category", store.getCategory());
-                    if(store.getCategory().equals("생활용품")) {
+                    Log.d("Store_category_food", store.getCategory());
+                    if(store.getCategory().equals("베이커리")) {
                         storeList.add(store); // 데이터들을 배열리스트에 넣고 리사이클 뷰에 넣을 준비
                     }
                 }
                 adapter.notifyDataSetChanged(); // 리스트 저장 및 새로고침
-                Log.e("CafeActivity","Success DB");
+                Log.e("FoodActivity","Success DB");
             }
 
             @Override
