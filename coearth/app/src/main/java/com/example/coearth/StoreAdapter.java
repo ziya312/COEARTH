@@ -1,6 +1,7 @@
 package com.example.coearth;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -26,6 +28,7 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.StoreViewHol
 
     private ArrayList<Store> storeList;
     private Context context;
+
 
 
     public StoreAdapter(ArrayList<Store> storeList, Context context) {
@@ -54,7 +57,6 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.StoreViewHol
         holder.tv_address.setText(storeList.get(position).getDetail());
         holder.tv_views.setText(storeList.get(position).getViews());
         holder.tv_star.setText(storeList.get(position).getScore());
-
     }
 
 
@@ -67,6 +69,7 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.StoreViewHol
         ImageView iv_store;
         TextView tv_title, tv_category, tv_views, tv_address, tv_star;
         RatingBar iv_ratingbar;
+        CardView cardView;
 
         public StoreViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -78,7 +81,23 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.StoreViewHol
             this.tv_address = itemView.findViewById(R.id.tv_address);
             this.tv_star = itemView.findViewById(R.id.tv_star);
             this.iv_ratingbar = itemView.findViewById(R.id.iv_ratingbar);
+            this.cardView = itemView.findViewById(R.id.cardView);
+            cardView.setOnClickListener(new View.OnClickListener(){
 
+                @Override
+                public void onClick(View v) {
+                    Store store = storeList.get(getAdapterPosition());
+                    Intent intent = new Intent(context, DetailActivity.class);
+                    intent.putExtra("title",store.getTitle());
+                    intent.putExtra("category",store.getCategory());
+                    intent.putExtra("address",store.getDetail());
+                    intent.putExtra("tel",store.getTel());
+                    intent.putExtra("image",store.getImg());
+
+                    context.startActivity(intent);
+                    Log.d("StoreAdapter", "Success ViewHolder");
+                }
+            });
             Log.d("StoreAdapter", "Success ViewHolder");
         }
     }
