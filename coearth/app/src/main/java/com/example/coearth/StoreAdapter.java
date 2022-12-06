@@ -1,8 +1,13 @@
 package com.example.coearth;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,95 +15,96 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.bumptech.glide.Glide;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
-import org.w3c.dom.Text;
-
-import java.text.BreakIterator;
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.StoreViewHolder> {
-
-
-    private ArrayList<Store> storeList;
+public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.ViewHolder> {
     private Context context;
+    private List<Store> storeList;
+    private StoreAdapter storelistActivity;
+    Bundle extras = new Bundle();
+    private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+    private DatabaseReference databaseReference = firebaseDatabase.getReference();
 
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        public TextView title, category, detail, star, views;
+        public ImageView image;
+        public RatingBar ratingBar;
 
+        public ViewHolder(@NonNull View v) {
+            super(v);
+            image = v.findViewById(R.id.image);
+            title = v.findViewById(R.id.stName);
+            category = v.findViewById(R.id.stCategory);
+            detail = v.findViewById(R.id.stDetail);
+            star = v.findViewById(R.id.star);
+            views = v.findViewById(R.id.views);
+            ratingBar = v.findViewById(R.id.ratingbar);
+        }
+    }
 
-    public StoreAdapter(ArrayList<Store> storeList, Context context) {
-        this.storeList = storeList;
+    //생성자
+    public StoreAdapter(Context context, List<Store> list) {
         this.context = context;
-        Log.d("StoreAdapter", "Success Adapter");
+        storeList = list;
+    }
 
+    @Override
+    public int getItemCount() {
+        return storeList.size();
     }
 
     @NonNull
     @Override
-    public StoreViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.store_item, parent, false);
-        StoreViewHolder holder = new StoreViewHolder(view);
-        return holder;
+    public StoreAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.store_item, parent, false);
+        return new StoreAdapter.ViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull StoreViewHolder holder, int position) {
-        Glide.with(holder.itemView)
-                .asBitmap()
-                .load(storeList.get(position).getImg())
-                .into(holder.iv_store);
-        holder.tv_title.setText(storeList.get(position).getTitle());
-        holder.tv_category.setText(storeList.get(position).getCategory());
-        holder.tv_address.setText(storeList.get(position).getDetail());
-        holder.tv_views.setText(storeList.get(position).getViews());
-        holder.tv_star.setText(storeList.get(position).getScore());
-    }
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
+        final Store stores = storeList.get(position);
+        /** 여기가 데이터베이스에서 이미지 받아와서 세팅하는 곳 **/
+        String url = stores.getImg();
+        Glide.with(holder.itemView.getContext()).load(url).into(holder.image);
+        holder.image.setColorFilter(Color.parseColor("#6F000000"), PorterDuff.Mode.SRC_ATOP);
+        holder.category.setText(stores.getCategory());
+        holder.detail.setText(stores.getDetail());
+        holder.title.setText(stores.getTitle());
+        holder.star.setText(stores.getScore());
+        holder.views.setText(stores.getViews());
+        holder.ratingBar.setRating(Float.valueOf(stores.getScore()));
 
+        holder.image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View view) {
+                databaseReference = FirebaseDatabase.getInstance().getReference(storeList.get(position).getTitle() + '/');
+                Map<String, Object> updateMap = new HashMap<>();
+                updateMap.put("views", String.valueOf(Integer.parseInt(stores.getViews())+1));
 
-    @Override
-    public int getItemCount() {
-        return (storeList != null ? storeList.size() : 0);
-    }
+                String title = stores.getTitle();
+                String detail = stores.getDetail();
+                String tel = stores.getTel();
+                String category = stores.getCategory();
+                String star = stores.getScore();
+                String views = stores.getViews();
 
-    public class StoreViewHolder extends RecyclerView.ViewHolder {
-        ImageView iv_store;
-        TextView tv_title, tv_category, tv_views, tv_address, tv_star;
-        RatingBar iv_ratingbar;
-        CardView cardView;
+                extras.putString("title", title);
+                extras.putString("detail", detail);
+                extras.putString("category", category);
+                extras.putString("tel", tel);
+                extras.putString("star", star);
+                extras.putString("views", views);
 
-        public StoreViewHolder(@NonNull View itemView) {
-            super(itemView);
-
-            this.iv_store = itemView.findViewById(R.id.iv_store);
-            this.tv_title = itemView.findViewById(R.id.tv_title);
-            this.tv_category = itemView.findViewById(R.id.tv_category);
-            this.tv_views = itemView.findViewById(R.id.tv_views);
-            this.tv_address = itemView.findViewById(R.id.tv_address);
-            this.tv_star = itemView.findViewById(R.id.tv_star);
-            this.iv_ratingbar = itemView.findViewById(R.id.iv_ratingbar);
-            this.cardView = itemView.findViewById(R.id.cardView);
-            cardView.setOnClickListener(new View.OnClickListener(){
-
-                @Override
-                public void onClick(View v) {
-                    Store store = storeList.get(getAdapterPosition());
-                    Intent intent = new Intent(context, DetailActivity.class);
-                    intent.putExtra("title",store.getTitle());
-                    intent.putExtra("category",store.getCategory());
-                    intent.putExtra("address",store.getDetail());
-                    intent.putExtra("tel",store.getTel());
-                    intent.putExtra("image",store.getImg());
-
-                    context.startActivity(intent);
-                    Log.d("StoreAdapter", "Success ViewHolder");
-                }
-            });
-            Log.d("StoreAdapter", "Success ViewHolder");
-        }
+                Intent intent = new Intent(view.getContext(), DetailActivity.class);
+                intent.putExtras(extras);
+                view.getContext().startActivity(intent);
+            }
+        });
     }
 }

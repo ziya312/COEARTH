@@ -1,12 +1,10 @@
 package com.example.coearth;
 
-import android.location.Location;
-
 import com.google.firebase.database.IgnoreExtraProperties;
 
 @IgnoreExtraProperties
 public class Store {
-    private String img; // URL 주소
+    private String img;
     private String title;
     private String category;
     private String detail;
@@ -84,5 +82,4 @@ public class Store {
     public String getViews(){ return views; }
 
     public void setViews(String views){ this.tel = views; }
-
 }

@@ -1,7 +1,6 @@
 package com.example.coearth;
 
 import android.Manifest;
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.PointF;
@@ -76,7 +75,7 @@ public class FragmentMap extends Fragment implements NaverMap.OnMapClickListener
     private InfoWindow infoWindow;
     private List<Store> storeList = new ArrayList<>();
     private List<Marker> markerList = new ArrayList<>();
-    /* hi*/
+
     // 데이터베이스 관련 변수
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databasedReference;
@@ -287,15 +286,13 @@ public class FragmentMap extends Fragment implements NaverMap.OnMapClickListener
 
                 Log.d("image HERE",stores.getImg());
 
+                /*
                 ImageView img = (ImageView) view.findViewById(R.id.img_store);
-                Glide.with(FragmentMap.this)
-                        .asBitmap()
-                        .override(120,120)
-                        .load(stores.getImg())
-                        .into(img);
+                Glide.with(FragmentMap.this).load(stores.getImg()).into(img);*/
+                
 
                 ((TextView) view.findViewById(R.id.stName)).setText(stores.getTitle());
-                ((TextView) view.findViewById(R.id.tv_address)).setText(stores.getDetail());
+                ((TextView) view.findViewById(R.id.stDetail)).setText(stores.getDetail());
                 ((TextView) view.findViewById(R.id.stCategory)).setText(stores.getCategory());
 
                 ratingNum = view.findViewById(R.id.rating);

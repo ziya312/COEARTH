@@ -13,11 +13,7 @@
         android:roundIcon="@mipmap/ic_logo_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Coearth">
-        <activity android:name=".LifeActivity"></activity>
-        <activity android:name=".CafeActivity" />
-        <activity android:name=".FoodActivity"/>
-        <activity android:name=".ClothActivity"/>
-        <activity android:name=".EtcActivity"/>
+        <activity android:name=".StoreAdapter"></activity>
         <activity android:name=".ReviewActivity" />
         <activity android:name=".DetailActivity" />
 
